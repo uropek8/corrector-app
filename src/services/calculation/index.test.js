@@ -21,27 +21,27 @@ describe("amounCalculate function", () => {
     expect(amounCalculate("en", textStr)).toBeDefined();
   });
 
-  test("shoud return amount for correct type of english text 120", () => {
+  test("Return 120 for correct type of eng text with length 656", () => {
     expect(amounCalculate("en", textStr, true)).toEqual(120);
   });
 
-  test("shoud return amount for correct type of russian text 50", () => {
+  test("Return 50 for correct type of ru text with length 656", () => {
     expect(amounCalculate("ru", textStr, true)).toEqual(50);
   });
 
-  test("shoud return amount for correct type of ukrainian text 50", () => {
+  test("Return 50 for correct type of uk text with length 656", () => {
     expect(amounCalculate("uk", textStr, true)).toEqual(50);
   });
 
-  test("shoud return amount for none type of russian text greater than 50", () => {
-    expect(amounCalculate("ru", textStr)).toBeGreaterThanOrEqual(50);
+  test("Return more than 50 for correct type of ru text with length 656", () => {
+    expect(amounCalculate("ru", textStr)).toBeGreaterThan(50);
   });
 
-  test("shoud return amount for none type of ukrainian text 60", () => {
+  test("Return 60 for none type of uk text with length 656", () => {
     expect(amounCalculate("uk", textStr)).toEqual(60);
   });
 
-  test("shoud return amount for none type of english text 144", () => {
+  test("Return 144 for none type of eng text with length 656", () => {
     expect(amounCalculate("en", textStr)).toEqual(144);
   });
 });
@@ -51,16 +51,20 @@ describe("deadlineDurationCalculate function", () => {
     expect(deadlineDurationCalculate("en", textStr)).toBeDefined();
   });
 
-  test("shoud return duration for english text 148", () => {
+  test("Return 148 min duration for eng text with length 656", () => {
     expect(deadlineDurationCalculate("en", textStr)).toEqual(148);
   });
 
-  test("shoud return duration for russian text 90", () => {
-    expect(deadlineDurationCalculate("ru", textStr)).toEqual(90);
+  test("Return 60 min duration for ru text with length 656", () => {
+    expect(deadlineDurationCalculate("uk", textStr)).toEqual(60);
   });
 
-  test("shoud return duration for ukrainian text 90", () => {
-    expect(deadlineDurationCalculate("ua", textXs)).toEqual(90);
+  test("Return 60 min duration for eng text with length 2", () => {
+    expect(deadlineDurationCalculate("en", textXs)).toEqual(60);
+  });
+
+  test("Return 60 min duration for ru text with length 2", () => {
+    expect(deadlineDurationCalculate("uk", textXs)).toEqual(60);
   });
 });
 
@@ -69,16 +73,20 @@ describe("deadlineDateCalculate function", () => {
     expect(deadlineDateCalculate(new Date(), 90)).toBeDefined();
   });
 
-  test("shoud return 30.08 11:30 from order of 28.08 23:30 to 90 min", () => {
+  test("Return date 30.08 11:30 from order of 28.08 23:30 to 90 min", () => {
     expect(deadlineDateCalculate(new Date(2021, 7, 27, 23, 30), 90)).toEqual(new Date(2021, 7, 30, 11, 30));
   });
 
-  test("shoud return 30.08 19:01 from order of 30.08 11:07 to 67 min", () => {
+  test("Return date 30.08 19:01 from order of 30.08 11:07 to 67 min", () => {
     expect(deadlineDateCalculate(new Date(2021, 7, 30, 19, 1), 67)).toEqual(new Date(2021, 7, 31, 11, 7));
   });
 
-  test("shoud return 30.08 09:00 from order of 30.08 11:07 to 67 min", () => {
+  test("Return date 30.08 09:00 from order of 30.08 11:07 to 67 min", () => {
     expect(deadlineDateCalculate(new Date(2021, 7, 30, 9), 67)).toEqual(new Date(2021, 7, 30, 11, 7));
+  });
+
+  test("Return date 06.09 11:07 from order of 03.09 22:50 to 45 min", () => {
+    expect(deadlineDateCalculate(new Date(2021, 8, 3, 22, 50), 45)).toEqual(new Date(2021, 8, 6, 10, 45));
   });
 });
 
@@ -87,19 +95,19 @@ describe("checkIsWorkTime function", () => {
     expect(checkIsWorkTime(7)).toBeDefined();
   });
 
-  test("shoud return true if time is 10", () => {
+  test("Return true if time is 10.00", () => {
     expect(checkIsWorkTime(10)).toBeTruthy();
   });
 
-  test("shoud return true if time is 18", () => {
+  test("Return true if time is 18.00", () => {
     expect(checkIsWorkTime(18)).toBeTruthy();
   });
 
-  test("shoud return false if time is 19", () => {
+  test("Return false if time is 19.00", () => {
     expect(checkIsWorkTime(19)).toBeFalsy();
   });
 
-  test("shoud return false if time is 0", () => {
+  test("Return false if time is 0", () => {
     expect(checkIsWorkTime(0)).toBeFalsy();
   });
 });

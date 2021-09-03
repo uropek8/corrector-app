@@ -20,8 +20,6 @@ const LangEnum = Object.freeze({
 //   PDF: "pdf",
 // });
 
-// console.log(textStr.length);
-
 const amounCalculate = (lang, text, type = false) => {
   const textLength = text.length;
   const ratioFileType = 1.2;
@@ -38,19 +36,20 @@ const amounCalculate = (lang, text, type = false) => {
 
 const deadlineDurationCalculate = (lang, text) => {
   const textLength = text.length;
-  const startMinutes = 30;
+  const fixedTime = 1800;
+  const engFormula = (textLength / 333) * 3600;
+  const cyrFormula = (textLength / 1333) * 3600;
   let time = 0;
 
   if (lang === LangEnum.RU || lang === LangEnum.UK) {
-    time = textLength < 1333 ? 60 : (textLength / 1333) * 60;
+    time = cyrFormula < 1800 ? 1800 : cyrFormula;
   } else {
-    time = textLength < 333 ? 60 : (textLength / 333) * 60;
+    time = engFormula < 1800 ? 1800 : engFormula;
   }
 
-  time = time + startMinutes;
+  time = (time + fixedTime) / 60;
 
   return Number(time.toFixed());
-  // return textLength;
 };
 
 const deadlineDateCalculate = (date, deadline) => {
@@ -97,6 +96,6 @@ const checkIsWorkTime = (hours) => {
 };
 
 // console.log(deadlineDurationCalculate("en", textStr));
-console.log(deadlineDateCalculate("Wed Aug 27 2021 17:36:39 GMT+0300", 148));
+// console.log(deadlineDateCalculate("Wed Aug 27 2021 17:36:39 GMT+0300", 148));
 
 export { amounCalculate, deadlineDurationCalculate, deadlineDateCalculate, checkIsWorkTime };
