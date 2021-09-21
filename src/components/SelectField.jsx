@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import arrowSrc from "../../assets/img/svg/arrow_down.svg";
+import arrowSrc from "../assets/img/svg/arrow_down.svg";
 
-function SelectField({ legend, name, options, value, onChange }) {
+const SelectField = ({ legend, name, options, value, onChange }) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const elementRef = useRef(null);
 

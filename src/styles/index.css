@@ -10,6 +10,10 @@
   @apply w-full h-15 relative flex items-center justify-between p-5 cursor-pointer text-sm font-medium -top-2;
 }
 
+.field-input {
+  @apply w-full h-15 text-sm font-medium rounded-lg border-transparent bg-transparent p-5 -mt-2 placeholder-gray-400 focus:shadow-none focus:ring-0 focus:border-transparent;
+}
+
 .field-textarea {
   @apply w-full min-h-50 text-sm font-medium rounded-2xl border border-gray-200 py-5 px-7 resize-none focus:shadow-none focus:ring-0 placeholder-gray-400;
 }

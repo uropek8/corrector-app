@@ -1,0 +1,4 @@
+{
+  "jest.debugMode": true,
+  "jest.enableInlineErrorMessages": true
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function TextField({ legend, type, name, value, onChange }) {
+const TextField = ({ legend, type, name, value, onChange }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const inputOutlineToggle = () => {
@@ -21,7 +21,7 @@ function TextField({ legend, type, name, value, onChange }) {
         {value !== "" && legend}
       </legend>
       <input
-        className="w-full h-15 text-sm font-medium rounded-lg border-transparent bg-transparent p-5 -mt-2 placeholder-gray-400 focus:shadow-none focus:ring-0 focus:border-transparent"
+        className="field-input"
         type={type}
         name={name}
         onFocus={inputOutlineToggle}

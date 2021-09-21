@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-// import { useForm } from "react-hook-form";
-import SelectField from "../SelectField/SelectField";
-import TextAreaField from "../TextAreaField/TextAreaField";
-import TextField from "../TextField/TextField";
+import SelectField from "./SelectField";
+import TextAreaField from "./TextAreaField";
+import TextField from "./TextField";
 import {
   amounCalculate,
   deadlineDurationCalculate,
   deadlineDateCalculate,
-} from "../../services/calculation/index";
-import { serviseOptions, languageOptions } from "../../services/options/index";
-import footerLogo from "../../assets/img/footer_logo.png";
+} from "../services/calculate";
+import { serviseOptions, languageOptions } from "../helpers/options";
+import footerLogo from "../assets/img/footer_logo.png";
 
-function App() {
+const App = () => {
   const [formFields, setFormFields] = useState({
     service: "",
     text: "",
@@ -34,8 +33,8 @@ function App() {
   useEffect(() => {
     if (formFields.service && formFields.text && formFields.language) {
       let orderTime = new Date().getTime();
-      let price = amounCalculate(formFields.language, formFields.text);
-      let duration = deadlineDurationCalculate(formFields.language, formFields.text);
+      let price = amounCalculate(formFields.language, formFields.text.length);
+      let duration = deadlineDurationCalculate(formFields.language, formFields.text.length);
       let deadline = deadlineDateCalculate(orderTime, duration).getTime();
 
       if (formFields.email) {

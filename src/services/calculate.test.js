@@ -3,68 +3,57 @@ import {
   deadlineDurationCalculate,
   deadlineDateCalculate,
   checkIsWorkTime,
-} from "./index";
-
-const textStr = `Как правильно перевести имя или название? Почему правильно так, а не иначе? 
-Какая формулировка лучше? Где посмотреть правила? Мы ответим на эти и многие другие ваши вопросы 
-точно, аргументированно и очень оперативно. Как правильно перевести имя или название? Почему 
-правильно так, а не иначе? Какая формулировка лучше? Где посмотреть правила? Мы ответим на эти 
-и многие другие ваши вопросы точно, аргументированно и очень оперативно. Как правильно перевести 
-имя или название? Почему правильно так, а не иначе? Какая формулировка лучше? Где посмотреть 
-правила? Мы ответим на эти и многие другие ваши вопросы точно, аргументированно и очень оперативно.`; // 656
-const textXs = "er";
+} from "./calculate";
 
 describe("amounCalculate function", () => {
-  beforeEach(() => {});
-
   test("shoud be defined", () => {
-    expect(amounCalculate("en", textStr)).toBeDefined();
+    expect(amounCalculate("en", 656)).toBeDefined();
   });
 
   test("Return 120 for correct type of eng text with length 656", () => {
-    expect(amounCalculate("en", textStr, true)).toEqual(120);
+    expect(amounCalculate("en", 656, true)).toEqual(120);
   });
 
   test("Return 50 for correct type of ru text with length 656", () => {
-    expect(amounCalculate("ru", textStr, true)).toEqual(50);
+    expect(amounCalculate("ru", 656, true)).toEqual(50);
   });
 
   test("Return 50 for correct type of uk text with length 656", () => {
-    expect(amounCalculate("uk", textStr, true)).toEqual(50);
+    expect(amounCalculate("uk", 656, true)).toEqual(50);
   });
 
   test("Return more than 50 for correct type of ru text with length 656", () => {
-    expect(amounCalculate("ru", textStr)).toBeGreaterThan(50);
+    expect(amounCalculate("ru", 656)).toBeGreaterThan(50);
   });
 
   test("Return 60 for none type of uk text with length 656", () => {
-    expect(amounCalculate("uk", textStr)).toEqual(60);
+    expect(amounCalculate("uk", 656)).toEqual(60);
   });
 
   test("Return 144 for none type of eng text with length 656", () => {
-    expect(amounCalculate("en", textStr)).toEqual(144);
+    expect(amounCalculate("en", 656)).toEqual(144);
   });
 });
 
 describe("deadlineDurationCalculate function", () => {
   test("shoud be defined", () => {
-    expect(deadlineDurationCalculate("en", textStr)).toBeDefined();
+    expect(deadlineDurationCalculate("en", 656)).toBeDefined();
   });
 
   test("Return 148 min duration for eng text with length 656", () => {
-    expect(deadlineDurationCalculate("en", textStr)).toEqual(148);
+    expect(deadlineDurationCalculate("en", 656)).toEqual(148);
   });
 
   test("Return 60 min duration for ru text with length 656", () => {
-    expect(deadlineDurationCalculate("uk", textStr)).toEqual(60);
+    expect(deadlineDurationCalculate("uk", 656)).toEqual(60);
   });
 
   test("Return 60 min duration for eng text with length 2", () => {
-    expect(deadlineDurationCalculate("en", textXs)).toEqual(60);
+    expect(deadlineDurationCalculate("en", 2)).toEqual(60);
   });
 
   test("Return 60 min duration for ru text with length 2", () => {
-    expect(deadlineDurationCalculate("uk", textXs)).toEqual(60);
+    expect(deadlineDurationCalculate("uk", 2)).toEqual(60);
   });
 });
 

@@ -1,11 +1,3 @@
-const textStr = `Как правильно перевести имя или название? Почему правильно так, а не иначе? 
-Какая формулировка лучше? Где посмотреть правила? Мы ответим на эти и многие другие ваши вопросы 
-точно, аргументированно и очень оперативно. Как правильно перевести имя или название? Почему 
-правильно так, а не иначе? Какая формулировка лучше? Где посмотреть правила? Мы ответим на эти 
-и многие другие ваши вопросы точно, аргументированно и очень оперативно. Как правильно перевести 
-имя или название? Почему правильно так, а не иначе? Какая формулировка лучше? Где посмотреть 
-правила? Мы ответим на эти и многие другие ваши вопросы точно, аргументированно и очень оперативно.`;
-
 const LangEnum = Object.freeze({
   RU: "ru",
   UK: "uk",
@@ -20,8 +12,7 @@ const LangEnum = Object.freeze({
 //   PDF: "pdf",
 // });
 
-const amounCalculate = (lang, text, type = false) => {
-  const textLength = text.length;
+const amounCalculate = (lang, textLength, type = false) => {
   const ratioFileType = 1.2;
   let amount = 0;
 
@@ -34,8 +25,7 @@ const amounCalculate = (lang, text, type = false) => {
   return type ? Number(amount.toFixed(2)) : Number((amount * ratioFileType).toFixed(2));
 };
 
-const deadlineDurationCalculate = (lang, text) => {
-  const textLength = text.length;
+const deadlineDurationCalculate = (lang, textLength) => {
   const fixedTime = 1800;
   const engFormula = (textLength / 333) * 3600;
   const cyrFormula = (textLength / 1333) * 3600;
@@ -94,8 +84,5 @@ const checkIsWorkTime = (hours) => {
 
   return hours >= startWorkHour && hours < endWorkHour ? true : false;
 };
-
-// console.log(deadlineDurationCalculate("en", textStr));
-// console.log(deadlineDateCalculate("Wed Aug 27 2021 17:36:39 GMT+0300", 148));
 
 export { amounCalculate, deadlineDurationCalculate, deadlineDateCalculate, checkIsWorkTime };
